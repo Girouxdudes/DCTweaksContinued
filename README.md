@@ -1,21 +1,14 @@
-## TemplateDevEnv
-_For Kotlin see [TemplateDevEnvKt](https://github.com/CleanroomMC/TemplateDevEnvKt)_
-
-Template workspace for modding Minecraft 1.12.2. Licensed under MIT, it is made for public use.
-
-This template runs on Java 21! Currently utilizies **Gradle 8.12** + **[RetroFuturaGradle](https://github.com/GTNewHorizons/RetroFuturaGradle) 1.4.1** + **Forge 14.23.5.2847**.
-
-With **coremod and mixin support** that is easy to configure.
-
-### Instructions:
-
-1. Click `use this template` at the top.
-2. Clone the repository that you have created with this template to your local machine.
-3. Make sure IDEA is using Java 21 for Gradle before you sync the project. Verify this by going to IDEA's `Settings > Build, Execution, Deployment > Build Tools > Gradle > Gradle JVM`.
-4. Open the project folder in IDEA. When prompted, click "Load Gradle Project" as it detects the `build.gradle`, if you weren't prompted, right-click the project's `build.gradle` in IDEA, select `Link Gradle Project`, after completion, hit `Refresh All` in the gradle tab on the right.
-5. Run gradle tasks such as `runClient` and `runServer` in the IDEA gradle tab, or use the auto-imported run configurations like `1. Run Client`.
-
-### Notes:
-- Dependencies script in [gradle/scripts/dependencies.gradle](gradle/scripts/dependencies.gradle), explanations are commented in the file.
-- Publishing script in [gradle/scripts/publishing.gradle](gradle/scripts/publishing.gradle).
-- When writing Mixins on IntelliJ, it is advisable to use latest [MinecraftDev Fork for RetroFuturaGradle](https://github.com/eigenraven/MinecraftDev/releases).
+# DCTweaks-Continued
+Additional features and performance enhancements for Dimensional Control. Forked from https://www.curseforge.com/minecraft/mc-mods/dimensional-control-tweaks
+#### Original DCTweaks Changes
+Fix - The second layer in a GenLayerCombine did not get its seed initialized, resulting in it generating the same regardless of world seed.<br>
+Fix - GenLayerTouching would stop checking further data when the minimum bordering biome condition was met, regardless of if the chance parameter prevented it from replacing the biome.<br>
+Performance - GenLayerCombine and GenLayerTouching now use hashmaps to store and get combinations instead of looping over all combinations, substantially increasing performance for large data sets.
+#### Additional Changes
+##### Features
+1) GenLayerClamp - allows for biome replacements based on x and z world coordinates. See documentation for details
+2) GenLayerZoomSubstitute - a variant of the zoom layer that allows users to substitute a given biome for another when placed by magnification. Used to prevent some biomes from growing larger during magnification
+3) GenLayerVoronoiZoomSubstitute - the same as GenLayerZoomSubstitute, but for voronoi zoom
+##### Performance
+1) GenLayerTouching rules now store whitelists and blacklists as hashsets, improving performance for large data sets.<br>
+2) Initially, GenLayerTouching would loop over all neighbors, even after meeting the replace requirements for a rule. Now it exits early if sufficient neighbors meet the whitelist/blacklist requirements, or if enough neighbors don't that it is impossible for the remainder to do so.
