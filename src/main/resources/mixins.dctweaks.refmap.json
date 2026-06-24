@@ -1,0 +1,20 @@
+{
+  "mappings": {
+    "com/bluefire/dctweaks/mixins/GenLayerTouchingMixin": {
+      "getInts": "Lcom/bloodnbonesgaming/dimensionalcontrol/world/mapgen/layer/GenLayerTouching;func_75904_a(IIII)[I"
+    },
+    "com/bluefire/dctweaks/mixins/GenLayerCombineMixin": {
+      "getInts": "Lcom/bloodnbonesgaming/dimensionalcontrol/world/mapgen/layer/GenLayerCombine;func_75904_a(IIII)[I"
+    }
+  },
+  "data": {
+    "searge": {
+      "com/bluefire/dctweaks/mixins/GenLayerTouchingMixin": {
+        "getInts": "Lcom/bloodnbonesgaming/dimensionalcontrol/world/mapgen/layer/GenLayerTouching;func_75904_a(IIII)[I"
+      },
+      "com/bluefire/dctweaks/mixins/GenLayerCombineMixin": {
+        "getInts": "Lcom/bloodnbonesgaming/dimensionalcontrol/world/mapgen/layer/GenLayerCombine;func_75904_a(IIII)[I"
+      }
+    }
+  }
+}
