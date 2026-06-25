@@ -5,7 +5,7 @@ Fix - The second layer in a GenLayerCombine did not get its seed initialized, re
 Fix - GenLayerTouching would stop checking further data when the minimum bordering biome condition was met, regardless of whether the chance parameter prevented it from replacing the biome.<br>
 Performance - GenLayerCombine and GenLayerTouching now use hashmaps to store and get combinations instead of looping over all combinations, substantially increasing performance for large data sets.
 #### Additional Changes
-##### Features
+##### New GenLayers
 1) GenLayerClamp - allows for biome replacements based on x and z world coordinates. See documentation for details
 2) GenLayerZoomSubstitute - a variant of the zoom layer that allows users to substitute a given biome for another when placed by magnification. Used to prevent some biomes from growing larger during magnification
 3) GenLayerVoronoiZoomSubstitute - the same as GenLayerZoomSubstitute, but for voronoi zoom
