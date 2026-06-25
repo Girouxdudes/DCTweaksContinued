@@ -2,7 +2,7 @@
 Additional features and performance enhancements for Dimensional Control. Forked from https://www.curseforge.com/minecraft/mc-mods/dimensional-control-tweaks
 #### Original DCTweaks Changes
 Fix - The second layer in a GenLayerCombine did not get its seed initialized, resulting in it generating the same regardless of world seed.<br>
-Fix - GenLayerTouching would stop checking further data when the minimum bordering biome condition was met, regardless of if the chance parameter prevented it from replacing the biome.<br>
+Fix - GenLayerTouching would stop checking further data when the minimum bordering biome condition was met, regardless of whether the chance parameter prevented it from replacing the biome.<br>
 Performance - GenLayerCombine and GenLayerTouching now use hashmaps to store and get combinations instead of looping over all combinations, substantially increasing performance for large data sets.
 #### Additional Changes
 ##### Features
