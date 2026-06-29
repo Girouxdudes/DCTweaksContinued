@@ -1,4 +1,4 @@
-package com.bluefire.dctweaks.core;
+package com.girouxdudes.dctweaks.core;
 
 import com.google.common.collect.Lists;
 import java.util.List;

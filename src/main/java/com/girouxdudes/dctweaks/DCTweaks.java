@@ -1,4 +1,4 @@
-package com.bluefire.dctweaks;
+package com.girouxdudes.dctweaks;
 
 import com.bloodnbonesgaming.lib.util.script.ScriptDocumentationHandler;
 import net.minecraftforge.fml.common.Mod;
@@ -29,6 +29,6 @@ public class DCTweaks {
 
    @EventHandler
    public void loadComplete(FMLLoadCompleteEvent event) {
-      ScriptDocumentationHandler.printAnnotatedDocumentation("com.bluefire.dctweaks");
+      ScriptDocumentationHandler.printAnnotatedDocumentation("com.girouxdudes.dctweaks");
    }
 }

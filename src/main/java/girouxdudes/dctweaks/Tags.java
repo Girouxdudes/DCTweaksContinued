@@ -1,4 +1,4 @@
-package bluefeuer.dctweaks;
+package girouxdudes.dctweaks;
 
 public class Tags {
    private Tags() {

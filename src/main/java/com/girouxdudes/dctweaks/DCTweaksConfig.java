@@ -1,4 +1,4 @@
-package com.bluefire.dctweaks;
+package com.girouxdudes.dctweaks;
 
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;

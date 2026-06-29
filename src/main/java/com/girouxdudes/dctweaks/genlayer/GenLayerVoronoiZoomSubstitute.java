@@ -1,4 +1,4 @@
-package com.bluefire.dctweaks.genlayer;
+package com.girouxdudes.dctweaks.genlayer;
 
 import com.bloodnbonesgaming.lib.util.script.ArgType;
 import com.bloodnbonesgaming.lib.util.script.ScriptArgs;

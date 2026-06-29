@@ -1,4 +1,4 @@
-package com.bluefire.dctweaks.mixins;
+package com.girouxdudes.dctweaks.mixins;
 
 import com.bloodnbonesgaming.dimensionalcontrol.world.mapgen.layer.GenLayerTouching;
 import com.bloodnbonesgaming.dimensionalcontrol.world.mapgen.layer.GenLayerTouchingData;

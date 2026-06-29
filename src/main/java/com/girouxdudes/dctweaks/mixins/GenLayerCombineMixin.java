@@ -1,4 +1,4 @@
-package com.bluefire.dctweaks.mixins;
+package com.girouxdudes.dctweaks.mixins;
 
 import com.bloodnbonesgaming.dimensionalcontrol.world.mapgen.layer.GenLayerCombine;
 import java.util.HashMap;
@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
