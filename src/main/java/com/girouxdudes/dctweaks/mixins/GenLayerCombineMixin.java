@@ -4,6 +4,8 @@ import com.bloodnbonesgaming.dimensionalcontrol.world.mapgen.layer.GenLayerCombi
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.girouxdudes.dctweaks.util.IHasParent2;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = GenLayerCombine.class, remap = true)
-public class GenLayerCombineMixin extends GenLayer {
+public class GenLayerCombineMixin extends GenLayer implements IHasParent2 {
    private Map<Integer, Map<Integer, Integer>> combinationsl = new HashMap<>();
 
    @Shadow(remap = false)
@@ -24,6 +26,10 @@ public class GenLayerCombineMixin extends GenLayer {
 
    public GenLayerCombineMixin(long p_i2125_1_) {
       super(p_i2125_1_);
+   }
+
+   public GenLayer getParent2() {
+      return parent2;
    }
 
    @Inject(method = "addCombination", cancellable = true, at = @At("HEAD"), remap = false)
@@ -53,14 +59,14 @@ public class GenLayerCombineMixin extends GenLayer {
 
    @Inject(method = "getInts", cancellable = true, at = @At("HEAD"), remap = true)
    public void getIntsMixin(int chunkX, int chunkZ, int width, int depth, CallbackInfoReturnable<int[]> cir) {
-      int[] parentInts = this.parent.getInts(chunkX - 1, chunkZ - 1, width + 2, depth + 2);
-      int[] parentInts2 = this.parent2.getInts(chunkX - 1, chunkZ - 1, width + 2, depth + 2);
+      int[] parentInts = this.parent.getInts(chunkX, chunkZ, width, depth);
+      int[] parentInts2 = this.parent2.getInts(chunkX, chunkZ, width, depth);
       int[] returnInts = IntCache.getIntCache(width * depth);
 
       for (int z = 0; z < depth; z++) {
          for (int x = 0; x < width; x++) {
             this.initChunkSeed(x + chunkX, z + chunkZ);
-            int parentIndex = x + 1 + (z + 1) * (width + 2);
+            int parentIndex = x + z * width;
             int currentBiome = parentInts[parentIndex];
             int currentBiome2 = parentInts2[parentIndex];
             returnInts[x + z * width] = currentBiome;

@@ -5,7 +5,6 @@ import com.bloodnbonesgaming.dimensionalcontrol.world.biomeprovider.BiomeProvide
 import com.girouxdudes.dctweaks.genlayer.GenLayerCacheRegistry;
 import com.girouxdudes.dctweaks.util.IBiomeProviderCustomMedium;
 import net.minecraft.world.WorldServer;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.event.world.ChunkEvent;
@@ -14,15 +13,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Map;
 
+//generates all chunks in a proxy group if one of them generates.
 @Mod.EventBusSubscriber(modid = "dctweaks")
 public class ConcurrentChunkCache {
 
-    private static boolean isGenerating = false;
+    private static final ThreadLocal<Boolean> isGenerating = ThreadLocal.withInitial(() -> false);
 
     @SubscribeEvent
     public static void onChunkLoad(ChunkEvent.Load event) {
         if (event.getWorld().isRemote) return;
-        if (isGenerating) return;
+        if (isGenerating.get()) return;
 
         int dimID = event.getWorld().provider.getDimension();
         Chunk chunk = event.getChunk();
@@ -31,7 +31,7 @@ public class ConcurrentChunkCache {
             for (int id : entry.getValue()) {
                 if(id == dimID) {
                     if(DimensionManager.getWorld(dimID).isChunkGeneratedAt(chunk.x, chunk.z)) return;
-                    isGenerating = true;
+                    isGenerating.set(true);
 
                     BiomeProviderCustomMedium provider = new BiomeProviderCustomMedium();
                     ((IBiomeProviderCustomMedium) provider).setSeed(event.getWorld().getSeed());
@@ -46,11 +46,14 @@ public class ConcurrentChunkCache {
                             }
                         }
                     }
-                    GenLayerCacheRegistry.cache = null;
-                    isGenerating = false;
+                    GenLayerCacheRegistry.cache.set(null);
+                    GenLayerCacheRegistry.secondaryCaches.get().clear();
+                    isGenerating.set(false);
                     return;
                 }
             }
         }
+        ThreadLocal<GenLayerCacheRegistry.CacheEntry> finalCache = GenLayerCacheRegistry.finalCache;
+        finalCache.get().ints = new int[0];
     }
 }

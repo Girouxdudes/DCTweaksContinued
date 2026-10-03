@@ -7,6 +7,8 @@
     "BiomeProviderCustomMediumMixin",
     "ConfigurationManagerMixin",
     "GenLayerCombineMixin",
+    "GenLayerCombineWhitelistMixin",
+    "GenLayerMixin",
     "GenLayerTouchingMixin",
     "GenLayerTouchingDataMixin"
   ],
